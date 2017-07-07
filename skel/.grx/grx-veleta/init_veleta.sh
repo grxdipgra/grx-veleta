@@ -4,7 +4,7 @@ HOME=/home/$USER
 GVFSMOUNT=/run/user/$UID/gvfs/smb-share\:server=veleta.grx,share=usuarios
 CARPETA_USUARIO=""
 PUNTO_MONTAJE="smb://veleta.grx/usuarios"
-BOOKMARK="./user-places.xbel"
+BOOKMARK=$HOME".local/share/user-places.xbel"
 
 export GVFSMOUNT
 export DIRECTORIO_BUSQUEDA
@@ -67,9 +67,9 @@ export _DESMONTA_GVFS
 	
 # Insertamos el bookmark en .xbel del skel y sustituimos 
 
-    awk '/'DIRECTORIO_USUARIO'/ { gsub (/'DIRECTORIO_USUARIO'/, "'$PUNTO_MONTAJE'" ) }; { print > "'$BOOKMARK'" }' $BOOKMARK
-    
     cp $BOOKMARK  /home/$USER/.local/share/
+    
+    awk '/'DIRECTORIO_USUARIO'/ { gsub (/'DIRECTORIO_USUARIO'/, "'$PUNTO_MONTAJE'" ) }; { print > "'$BOOKMARK'" }' $BOOKMARK
 
 #Crear .desktop VELETA
 #/home/si_alej/.local/share/remoteview/VELETA.desktop
