@@ -4,7 +4,7 @@ HOME=/home/$USER
 GVFSMOUNT=/run/user/$UID/gvfs/smb-share\:server=veleta.grx,share=usuarios
 CARPETA_USUARIO=""
 PUNTO_MONTAJE="smb://veleta.grx/usuarios"
-BOOKMARK="./skel/user-places.xbel"
+BOOKMARK="./user-places.xbel"
 
 export GVFSMOUNT
 export DIRECTORIO_BUSQUEDA
@@ -95,8 +95,6 @@ export _DESMONTA_GVFS
 #  </info>
 # </bookmark>
 
-#Insertamos una línea en el .profile para que realice el montaje al iniciar sesión.
-	
-#	echo "gvfs-mount $PUNTO_MONTAJE" >> /home/$USER/.profile
 
+    
 exit 0

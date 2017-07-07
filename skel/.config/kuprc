@@ -1,0 +1,18 @@
+[Kup settings]
+Backups enabled=true
+Number of backups=1
+
+[Plan/1]
+Accumulated usage time=1080
+Ask first=false
+Backup type=1
+Description=Veleta
+Destination type=0
+Filesystem destination path=
+Last available space=886459523072
+Last backup size=1606676
+Last complete backup=2017,6,30,9,25,58
+Paths excluded=
+Paths included=/home/si_alej/Documentos
+Schedule type=0
+Usage limit=1
