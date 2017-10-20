@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Automatically added by dh_makeshlibs
+if [ "$1" = "remove" ]; then
+	ldconfig
+fi
+# End automatically added section
+
+
+LOG=/var/log/grx-veleta.log
+archivo="/etc/security/pam_mount.conf.xml"
+archivo_mod="/etc/security/pam_mount.conf.xml.old"
+ComRes_tmp=$(
+if [ -f $archivo_mod ];then 
+mv $archivo_mod $archivo
+fi
+)
+if [ -z "$ComRes_tmp" ]; then
+	echo "El archivo $archivo se modifico correctamente." >> $LOG
+else 
+	echo "Se ha producido un error.  Puede visualizar más información en $LOG"
+	echo "$ComRes_tmp" >> $LOG
+fi
+
+
+
+

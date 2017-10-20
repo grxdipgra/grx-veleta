@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#Comprueba si existe la linea de montaje de veleta en /etc/fstab
+
+	cat /etc/fstab | grep -i "veleta.grx" > /dev/null
+	if [ $? -ne 0 ];then
+		echo "//veleta.grx/usuarios /media/veleta  cifs  noauto,soft,sec=krb5,cifsacl,iocharset=utf8,file_mode=0644,dir_mode=0755,user  0 0" >> /etc/fstab
+	fi
+	
+#Insertamos la ejecución del script de inicio de veleta init_veleta.sh en .profile
+
+	cat /etc/fstab | grep -i "veleta.grx" 
+	if [ $? -ne 0 ];then
+		echo /etc/skel/.grx/init_veleta.sh >> /etc/skel/.profile
+	fi
+
+exit 0

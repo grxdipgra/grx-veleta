@@ -1,0 +1,18 @@
+[Kup settings]
+Backups enabled=true
+Number of backups=1
+
+[Plan/1]
+Accumulated usage time=0
+Ask first=false
+Backup type=1
+Description=Veleta
+Destination type=0
+Filesystem destination path=file:///CARPETA_VELETA
+Last available space=871827857408
+Last backup size=337424801
+Last complete backup=2017,7,13,12,48,51
+Paths excluded=
+Paths included=$HOME/Documentos
+Schedule type=0
+Usage limit=1

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+    <id>org.kde.kupapplet</id>
+    <name>Backup Status</name>
+    <name xml:lang="de">Zustand des Backups</name>
+    <name xml:lang="pt_BR">Estado do backup</name>
+    <name xml:lang="sv">Säkerhetskopiornas status</name>
+    <name xml:lang="zh_TW">備份狀態</name>
+    <summary>Displays status of backup plans</summary>
+    <summary xml:lang="de">Status der Backupkonfigurationen anzeigen</summary>
+    <summary xml:lang="pt_BR">Exibe o estado dos planos de backup</summary>
+    <summary xml:lang="sv">Visar status för säkerhetskopior</summary>
+    <summary xml:lang="zh_TW">顯示備份計畫的狀態</summary>
+    <url type="homepage">http://github.com/spersson/kup</url>
+    <developer_name>Simon Persson &lt;simon.persson@mykolab.com&gt;</developer_name>
+    <icon type="stock">kup</icon>
+    <project_license>GPL</project_license>
+    <metadata_license>CC0-1.0</metadata_license>
+</component>
