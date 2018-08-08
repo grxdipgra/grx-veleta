@@ -4,6 +4,6 @@ Section: grx
 Maintainer: Diputación Provincial de Granada, Atención Informática a Usuarios <atencionusuarios@dipgra.es>
 Architecture: all
 Version: 0.1.2
-Depends: grsync , kup-client
+Depends: grsync , kup-client , keyutils
 Description: Monta la carpeta personal de los usuarios en veleta.
 
