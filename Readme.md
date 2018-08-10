@@ -133,7 +133,6 @@ Una vez creado el paquete se mueve al equipo a instalar.
 
 El paquete kup-client se instala con apt pues está en los repositorios.
 
-Se necesita keyutils instalado para usar autenticación kerberos con mount.cifs
 
 Creación del directorio de usuario.
 

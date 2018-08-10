@@ -58,7 +58,7 @@ export _MONTA_VELETA
 	if [ "$CARPETA_USUARIO" != "" ];then #Si se ha encontrado... 
 		PATH_USUARIO=smb://$SERVIDOR$CARPETA_USUARIO
 		echo "La carpeta de usuario es: "$PATH_USUARIO
-# Modificar el bookmark en .xbel del del perfil de usuario 
+# Modificar el bookmark en .xbel del perfil de usuario 
         awk '/'DIRECTORIO_USUARIO'/ { gsub (/'DIRECTORIO_USUARIO'/, "'$PATH_USUARIO'" ) }; { print > "'$BOOKMARK'" }' $BOOKMARK
 	else #Si no se ha encontrado...
 		echo "El usuario "$USER" no posee carpeta en el servidor de archivos o se encuentra dentro de la lista de excepciones"
