@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel>
-<xbel xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info">
- <bookmark href="file:///home/si_alej">
-  <title>Home</title>
+<xbel xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks">
+ <bookmark href="DIRECTORIO_USUARIO">
+  <title>Mi carpeta en VELETA</title>
   <info>
    <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="user-home"/>
+    <bookmark:icon name="folder-remote-symbolic"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/0</ID>
-    <isSystemItem>true</isSystemItem>
+    <ID>1495632700/2 (V2)</ID>
+    <IsHidden>false</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="COPIA_SEGURIDAD">
+  <title>Copia de Seguridad</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-locked"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1534165017/4 (V2)</ID>
+    <IsHidden>false</IsHidden>
    </metadata>
   </info>
  </bookmark>
@@ -20,8 +32,9 @@
     <bookmark:icon name="network-workgroup"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/1</ID>
+    <ID>1495797977/1</ID>
     <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
    </metadata>
   </info>
  </bookmark>
@@ -32,8 +45,9 @@
     <bookmark:icon name="folder-red"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/2</ID>
+    <ID>1495797977/2</ID>
     <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
    </metadata>
   </info>
  </bookmark>
@@ -41,25 +55,15 @@
   <title>Trash</title>
   <info>
    <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="user-trash"/>
+    <bookmark:icon name="user-trash-full"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/3</ID>
+    <ID>1495797977/3</ID>
     <isSystemItem>true</isSystemItem>
+    <IsHidden>false</IsHidden>
    </metadata>
   </info>
  </bookmark>
- <info>
-  <metadata owner="http://www.kde.org">
-   <GroupState-Places-IsHidden>false</GroupState-Places-IsHidden>
-   <GroupState-Remote-IsHidden>false</GroupState-Remote-IsHidden>
-   <GroupState-Devices-IsHidden>false</GroupState-Devices-IsHidden>
-   <GroupState-RemovableDevices-IsHidden>false</GroupState-RemovableDevices-IsHidden>
-   <withBaloo>true</withBaloo>
-   <GroupState-SearchFor-IsHidden>false</GroupState-SearchFor-IsHidden>
-   <GroupState-RecentlySaved-IsHidden>false</GroupState-RecentlySaved-IsHidden>
-  </metadata>
- </info>
  <bookmark href="timeline:/today">
   <title>Today</title>
   <info>
@@ -67,7 +71,9 @@
     <bookmark:icon name="go-jump-today"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/4</ID>
+    <ID>1495797994/0 (V2)</ID>
+    <OnlyInApp>dolphin-places-panel</OnlyInApp>
+    <IsHidden>false</IsHidden>
     <isSystemItem>true</isSystemItem>
    </metadata>
   </info>
@@ -79,7 +85,9 @@
     <bookmark:icon name="view-calendar-day"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/5</ID>
+    <ID>1495797995/1 (V2)</ID>
+    <OnlyInApp>dolphin-places-panel</OnlyInApp>
+    <IsHidden>false</IsHidden>
     <isSystemItem>true</isSystemItem>
    </metadata>
   </info>
@@ -91,7 +99,9 @@
     <bookmark:icon name="view-calendar-month"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/6</ID>
+    <ID>1495797995/2 (V2)</ID>
+    <OnlyInApp>dolphin-places-panel</OnlyInApp>
+    <IsHidden>false</IsHidden>
     <isSystemItem>true</isSystemItem>
    </metadata>
   </info>
@@ -103,7 +113,9 @@
     <bookmark:icon name="view-calendar-month"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/7</ID>
+    <ID>1495797995/3 (V2)</ID>
+    <OnlyInApp>dolphin-places-panel</OnlyInApp>
+    <IsHidden>false</IsHidden>
     <isSystemItem>true</isSystemItem>
    </metadata>
   </info>
@@ -115,7 +127,9 @@
     <bookmark:icon name="folder-text"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/8</ID>
+    <ID>1495797995/4 (V2)</ID>
+    <OnlyInApp>dolphin-places-panel</OnlyInApp>
+    <IsHidden>false</IsHidden>
     <isSystemItem>true</isSystemItem>
    </metadata>
   </info>
@@ -124,10 +138,11 @@
   <title>Images</title>
   <info>
    <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="folder-images"/>
+    <bookmark:icon name="application-octet-stream"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/9</ID>
+    <ID>1498826470/0</ID>
+    <IsHidden>false</IsHidden>
     <isSystemItem>true</isSystemItem>
    </metadata>
   </info>
@@ -139,7 +154,9 @@
     <bookmark:icon name="folder-sound"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/10</ID>
+    <ID>1498826470/0 (V2)</ID>
+    <OnlyInApp>dolphin-places-panel</OnlyInApp>
+    <IsHidden>false</IsHidden>
     <isSystemItem>true</isSystemItem>
    </metadata>
   </info>
@@ -151,7 +168,9 @@
     <bookmark:icon name="folder-videos"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1533732360/11</ID>
+    <ID>1498826470/1 (V2)</ID>
+    <OnlyInApp>dolphin-places-panel</OnlyInApp>
+    <IsHidden>false</IsHidden>
     <isSystemItem>true</isSystemItem>
    </metadata>
   </info>

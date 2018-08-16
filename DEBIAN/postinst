@@ -4,10 +4,10 @@
 
 	cat /etc/fstab | grep -i "veleta.grx" > /dev/null
 	if [ $? -ne 0 ];then
-		echo "//veleta.grx/usuarios /media/veleta  cifs  noauto,soft,sec=krb5,cifsacl,iocharset=utf8,file_mode=0644,dir_mode=0755,user  0 0" >> /etc/fstab
+		echo "//veleta.grx/usuarios /media/veleta  cifs  noauto,soft,sec=krb5,iocharset=utf8,user  0 0" >> /etc/fstab
 	fi
 	
-#Insertamos la ejecución del script de inicio de veleta init_veleta.sh en .profile
+#Insertamos la ejecución del script de inicio de veleta init_veleta.sh en /etc/skel/.profile
 
 	cat /etc/fstab | grep -i "veleta.grx" 
 	if [ $? -ne 0 ];then
