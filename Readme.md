@@ -45,7 +45,7 @@ dir_usuario=/veleta.grx/usuarios/$carpeta_usuario
 umount /media/veleta
 
 ##### Kup
-Se va ha usar el sistema de buckup Kup.
+Se va ha usar el sistema de backup Kup.
 Se instala desde .deb y despues se sustituyen los archivos modificados y compilados :
     /usr/lib/libkdeinit5_kup-daemon.so
     /usr/bin/kup-daemon
@@ -139,5 +139,6 @@ Creación del directorio de usuario.
 Hay que modificar /etc/pam.d/common-session
 
 insertar la linea: session required pam_systemd.so skel=/etc/skel/ umask=0022
+					session required pam_mkhomedir.so skel=/etc/skel/ umask=0022
 
 Reiniciar el sistema.
