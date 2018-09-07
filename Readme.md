@@ -21,6 +21,10 @@ Archivos:
 
 Montaje de la carpeta del usuario -> //veleta.grx/usuarios /media/veleta  cifs  noauto,soft,sec=krb5,cifsacl,iocharset=utf8,file_mode=0644,dir_mode=0755,user  0 0
 
+Se ha modificado el montaje para no incluir las acl pues no las reconoce:
+
+//veleta.grx/usuarios /media/veleta  cifs  noauto,soft,sec=krb5,iocharset=utf8,user  0 0
+
 En el .profile hay que poner el script de montaje .... 
 
 Lineas script:

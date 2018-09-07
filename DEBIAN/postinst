@@ -11,7 +11,7 @@
 
 	cat /etc/fstab | grep -i "veleta.grx" 
 	if [ $? -ne 0 ];then
-		echo "/etc/skel/.grx/init_veleta.sh" >> /etc/skel/.profile
+		echo $HOME"/.grx/init_veleta.sh" >> /etc/skel/.profile
 	fi
 
 exit 0

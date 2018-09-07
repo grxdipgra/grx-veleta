@@ -1,8 +1,7 @@
 #!/bin/bash
 
-
 #GVFSMOUNT=/run/user/$UID/gvfs/smb-share\:server=veleta.grx,share=usuarios
-# Eliminamos @grx del nombre de usuario si exixste.
+# Eliminamos @grx del nombre de usuario si existe.
 USUARIO=$(echo ${USER%@*?}) 
 HOME=/home/$USUARIO
 PUNTO_MONTAJE="/media/veleta"
@@ -11,7 +10,9 @@ CARPETA_USUARIO=""
 BOOKMARK="$HOME/.local/share/user-places.xbel"
 SERVIDOR="veleta.grx/usuarios"
 KUP_CONFIG=$HOME/.config/kuprc
-EXCLUSIONES=""
+
+# Volcamos la fecha al log
+date 
 
 export DIRECTORIO_BUSQUEDA
 export PUNTO_MONTAJE
@@ -24,7 +25,7 @@ function _MONTA_VELETA(){
 		mkdir /media/veleta
 	fi
 #Comprueba si existe la linea de montaje de veleta en /etc/fstab
-cat /etc/fstab | grep -i "veleta.grx" > /dev/null
+	cat /etc/fstab | grep -i "veleta.grx" > /dev/null
 #Si no existe insertamos la linea en /etc/fstab
 	if [ $? -ne 0 ];then
 		echo "//veleta.grx/usuarios /media/veleta  cifs  noauto,soft,sec=krb5,cifsacl,iocharset=utf8,file_mode=0644,dir_mode=0755,user  0 0" >> /etc/fstab
@@ -51,35 +52,50 @@ export _MONTA_VELETA
 
 	echo -n "Buscando carpeta de "$USUARIO" ..."
 	
-	CARPETA_USUARIO=$(find $PUNTO_MONTAJE -maxdepth 3 -mindepth 0 -type d \( -path '/media/veleta/AAM' -o -path '/media/veleta/AB' -o -path '/media/veleta/ACTAS.R.CORP.AREA' -o -path '/media/veleta/ADMINISTRACION ELECTRONICA' -o -path '/media/veleta/Aplicaciones' -o -path '/media/veleta/CCSS DIPUTACION' -o -path '/media/veleta/CD' -o -path '/media/veleta/CEL' -o -path '/media/veleta/Centro de la Mujer' -o -path '/media/veleta/CIE' -o -path '/media/veleta/DatFich' -o -path '/media/veleta/DATOS' -o -path '/media/veleta/Deportes' -o -path '/media/veleta/Dipuutil' -o -path '/media/veleta/Dossier prensa' -o -path '/media/veleta/EIEL' -o -path '/media/veleta/FPRESUP' -o -path '/media/veleta/General_Todos_Uso_Compartido' -o -path '/media/veleta/GranadaEnRed' -o -path '/media/veleta/HuescarBackup' -o -path '/media/veleta/INFOLEX' -o -path '/media/veleta/Juventud' -o -path '/media/veleta/Metrop' -o -path '/media/veleta/OBRAS' -o -path '/media/veleta/OBRAS17' -prune -o -path '/media/veleta/OBRAS-GENERAL' -o -path '/media/veleta/OBRASYSERVICIOS' -o -path '/media/veleta/Parque Movil' -o -path '/media/veleta/Patronato Garcia Lorca' -o -path '/media/veleta/Patronato Rodriguez Penalva' -o -path '/media/veleta/Residencia Penalva' -o -path '/media/veleta/Resoluciones' -o -path '/media/veleta/RRHH-CCSS' -o -path '/media/veleta/RRHH-SI' -o -path '/media/veleta/SAGE' -o -path '/media/veleta/Sindicatos' -o -path '/media/veleta/Sistemas' -o -path '/media/veleta/Turismo' -o -path '/media/veleta/usr' -o -path '/media/veleta/VIGILANTES' -o -path '/media/veleta/VISOGSA' \) -prune -o -iname $USUARIO  2>/dev/null -print0 -quit | sed "s|"$PUNTO_MONTAJE"||")
-	
-	echo -e " [\e[0;32mok\e[0m]"
-	
-	echo $CARPETA_USUARIO
+	CARPETA_USUARIO=$(find $PUNTO_MONTAJE -maxdepth 3 -mindepth 0 -type d -iname $USUARIO  2>/dev/null -print -quit | sed "s|"$PUNTO_MONTAJE"||")
 	
 	#Si el usuario posee carpeta en veleta
 	if [ "$CARPETA_USUARIO" != "" ];then #Si se ha encontrado... 
 		PATH_USUARIO=smb://$SERVIDOR$CARPETA_USUARIO
+		echo -e " [\e[0;32mok\e[0m]"
 		echo "La carpeta de usuario es: "$PATH_USUARIO
-# Modificar el bookmark en .xbel del perfil de usuario 
-        awk '/'DIRECTORIO_USUARIO'/ { gsub (/'DIRECTORIO_USUARIO'/, "'$PATH_USUARIO'" ) }; { print > "'$BOOKMARK'" }' $BOOKMARK
+
+		# Modificar el bookmark en .xbel del perfil de usuario 
+        awk '/'DIRECTORIO_USUARIO'/ { gsub (/'DIRECTORIO_USUARIO'/, '"\"$PATH_USUARIO\""' ) }; { print > '"\"$BOOKMARK\""' }' $BOOKMARK
+		echo "Se ha creado el bookmark de la carpeta de usuario: "$PATH_USUARIO
+		echo -e " [\e[0;32mok\e[0m]"
+
 		# Crear carpeta de copias de seguridad
 		ls $HOME/COPIA_SEGURIDAD > /dev/null
-		#Si no existe creamos el directorio /media/veleta
+		#Si no existe se crea
 		if [ $? -ne 0 ];then
 			mkdir $HOME/COPIA_SEGURIDAD
+			echo "Se ha creado la carpeta de copias de seguridad: "$HOME/COPIA_SEGURIDAD
+			echo -e " [\e[0;32mok\e[0m]"
 		fi
-		awk '/'DIRECTORIO_COPIA_SEGURIDAD'/ { gsub (/'DIRECTORIO_COPIA_SEGURIDAD'/, "'$HOME/COPIA_SEGURIDAD'" ) }; { print > "'$BOOKMARK'" }' $BOOKMARK
+	
+		ORIGEN=$HOME/COPIA_SEGURIDAD
+		awk '/'DIRECTORIO_COPIA_SEGURIDAD'/ { gsub (/'DIRECTORIO_COPIA_SEGURIDAD'/, "'$ORIGEN'" ) }; { print > "'$BOOKMARK'" }' $BOOKMARK
+		echo "Se ha creado el bookmark de copias de seguridad: "$ORIGEN
+		echo -e " [\e[0;32mok\e[0m]"
+
+		# Modificar el origen de las copias de seguridad
+		awk '/'DIRECTORIO_COPIA_SEGURIDAD'/ { gsub (/'DIRECTORIO_COPIA_SEGURIDAD'/, "'$ORIGEN'" ) }; { print > "'$KUP_CONFIG'" }' $KUP_CONFIG
+		DESTINO=$PUNTO_MONTAJE$CARPETA_USUARIO
+	
+		# Modificar el destino de las copias de seguridad 
+		awk '/'CARPETA_VELETA'/ { gsub (/'CARPETA_VELETA'/, '"\"$DESTINO\""' ) }; { print > '"\"$KUP_CONFIG\""' }' $KUP_CONFIG
+
+		echo "Se ha configurado el origen: "$ORIGEN" y destino: "$DESTINO" de las copias de seguridad." 
+		echo -e " [\e[0;32mok\e[0m]"
+
 	else #Si no se ha encontrado...
-		echo "El usuario "$USUARIO" no posee carpeta en el servidor de archivos o se encuentra dentro de la lista de excepciones"
+		echo -e " [\e[0;31mfallo\e[0m]"
+		echo "El usuario "$USUARIO" no posee carpeta en el servidor de archivos"
 		exit 0
 	fi
 
-# Modificar el origen de las copias de seguridad
-	awk '/'DIRECTORIO_COPIA_SEGURIDAD'/ { gsub (/'DIRECTORIO_COPIA_SEGURIDAD'/, "'$HOME/COPIA_SEGURIDAD'" ) }; { print > "'$KUP_CONFIG'" }' $KUP_CONFIG
 
-# Modificar el destino de las copias de seguridad 
-	awk '/'CARPETA_VELETA'/ { gsub (/'CARPETA_VELETA'/, "'$PUNTO_MONTAJE$CARPETA_USUARIO'" ) }; { print > "'$KUP_CONFIG'" }' $KUP_CONFIG
 
 
 exit 0
