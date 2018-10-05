@@ -1,9 +1,9 @@
 Package: grx-veleta
 Priority: optional
-Section: GrX
-Maintainer: OSL Diputación de Granada, OSLa <osl@dipgra.es>
+Section: grx
+Maintainer: Diputación Provincial de Granada, Atención Informática a Usuarios <atencionusuarios@dipgra.es>
 Architecture: all
 Version: 0.1.2
-Depends: keyutils, grx-kup
-Description: Monta la carpeta personal de los usuarios en veleta y prepara los recursos para copias de seguridad.
+Depends: grsync , kup-client , keyutils , xmlstarlet
+Description: Monta la carpeta personal de los usuarios en veleta.
 

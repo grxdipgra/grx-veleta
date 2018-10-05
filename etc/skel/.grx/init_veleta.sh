@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#GVFSMOUNT=/run/user/$UID/gvfs/smb-share\:server=veleta.grx,share=usuarios
 # Eliminamos @grx del nombre de usuario si existe.
 USUARIO=$(echo ${USER%@*?}) 
 HOME=/home/$USUARIO
@@ -60,11 +59,15 @@ export _MONTA_VELETA
 		echo -e " [\e[0;32mok\e[0m]"
 		echo "La carpeta de usuario es: "$PATH_USUARIO
 
+		# Mostramos el marcador si esta oculto
+		xmlstarlet  ed -L -u "/xbel/bookmark[@href='DIRECTORIO_USUARIO']/info/metadata[@owner='http://www.kde.org']/IsHidden" -v false $BOOKMARK
+
+
 		# Modificar el bookmark en .xbel del perfil de usuario 
         awk '/'DIRECTORIO_USUARIO'/ { gsub (/'DIRECTORIO_USUARIO'/, '"\"$PATH_USUARIO\""' ) }; { print > '"\"$BOOKMARK\""' }' $BOOKMARK
 		echo "Se ha creado el bookmark de la carpeta de usuario: "$PATH_USUARIO
 		echo -e " [\e[0;32mok\e[0m]"
-
+		
 		# Crear carpeta de copias de seguridad
 		ls $HOME/COPIA_SEGURIDAD > /dev/null
 		#Si no existe se crea
@@ -91,7 +94,9 @@ export _MONTA_VELETA
 
 	else #Si no se ha encontrado...
 		echo -e " [\e[0;31mfallo\e[0m]"
-		echo "El usuario "$USUARIO" no posee carpeta en el servidor de archivos"
+		echo "El usuario "$USUARIO" no posee carpeta en el servidor de archivos o no hay conexión"
+		# Ocultamos el marcador si no hay conexion
+		xmlstarlet  ed -L -u "/xbel/bookmark[@href='DIRECTORIO_USUARIO']/info/metadata[@owner='http://www.kde.org']/IsHidden" -v true $BOOKMARK
 		exit 0
 	fi
 

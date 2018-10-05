@@ -1,7 +1,5 @@
 Criterio: 
 	1.- instalacion:
-		montar con gvfs veleta
-		no se usa pam_mount
 		desmontar veleta y montar la carpeta de usuario.
 		hacer la búsqueda de la carpeta y componer el usuario
 		Si no existe insertar el punto de montaje de veleta en fstab (/veleta/usuarios)
